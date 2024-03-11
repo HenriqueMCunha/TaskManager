@@ -13,4 +13,7 @@ public interface JobRepository extends MongoRepository<JobEntity, String> {
     List<JobEntity> findAllJobs();
     @Query("{'priority': { $gte : ?0 }}")
     List<JobEntity> findJobsByPriority(Integer priority);
+
+    @Query("{'taskName': {'$regex': ?0, '$options': 'i'}}")
+    List<JobEntity> findJobsByTaskName(String taskName);
 }
