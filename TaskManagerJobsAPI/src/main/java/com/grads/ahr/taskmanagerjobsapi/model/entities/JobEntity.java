@@ -1,12 +1,15 @@
 package com.grads.ahr.taskmanagerjobsapi.model.entities;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
 @Document
 public class JobEntity {
+
+    @Id
     private ObjectId id;
     private ObjectId userId;
     private String taskName;
@@ -79,5 +82,18 @@ public class JobEntity {
 
     public void setCompleted(Boolean completed) {
         isCompleted = completed;
+    }
+
+    @Override
+    public String toString() {
+        return "JobEntity{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", taskName='" + taskName + '\'' +
+                ", description='" + description + '\'' +
+                ", priority=" + priority +
+                ", completedBy=" + completedBy +
+                ", isCompleted=" + isCompleted +
+                '}';
     }
 }

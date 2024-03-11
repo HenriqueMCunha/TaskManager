@@ -4,20 +4,25 @@ import com.grads.ahr.taskmanagerjobsapi.model.entities.JobEntity;
 import com.grads.ahr.taskmanagerjobsapi.model.repositories.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class test {
+@RestController
+public class TestController {
 
     private final JobRepository jobRepository;
 
     @Autowired
-    public test(JobRepository jobRepository) {
+    public TestController(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
     }
 
     @GetMapping("/test")
-    public List<JobEntity> testFunction() {
-        return jobRepository.findAllJobs();
+    public void testFunction() {
+        ArrayList<JobEntity> allJobs = (ArrayList<JobEntity>) jobRepository.findAll();
+        for (JobEntity job : allJobs) {
+            System.out.println(job.getTaskName());
+        }
     }
 }
