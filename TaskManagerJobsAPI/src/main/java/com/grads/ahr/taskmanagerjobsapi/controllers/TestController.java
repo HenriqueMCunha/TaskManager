@@ -11,6 +11,7 @@ import java.util.ArrayList;
 @RestController
 public class TestController {
 
+    @Autowired
     private final JobRepository jobRepository;
 
     @Autowired

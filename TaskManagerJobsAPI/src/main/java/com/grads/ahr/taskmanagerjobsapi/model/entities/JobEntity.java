@@ -6,42 +6,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document
+@Document(collection = "Jobs")
 public class JobEntity {
 
-    @Id
-    private ObjectId id;
-    private ObjectId userId;
     private String taskName;
     private String description;
     private int priority;
     private Date completedBy;
     private Boolean isCompleted;
 
-    public JobEntity(ObjectId id, ObjectId userId, String taskName, String description, int priority, Date completedBy, Boolean isCompleted) {
-        this.id = id;
-        this.userId = userId;
+    public JobEntity(String taskName, String description, int priority, Date completedBy, Boolean isCompleted) {
         this.taskName = taskName;
         this.description = description;
         this.priority = priority;
         this.completedBy = completedBy;
         this.isCompleted = isCompleted;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
-    public ObjectId getUserId() {
-        return userId;
-    }
-
-    public void setUserId(ObjectId userId) {
-        this.userId = userId;
     }
 
     public String getTaskName() {
@@ -87,8 +66,6 @@ public class JobEntity {
     @Override
     public String toString() {
         return "JobEntity{" +
-                "id=" + id +
-                ", userId=" + userId +
                 ", taskName='" + taskName + '\'' +
                 ", description='" + description + '\'' +
                 ", priority=" + priority +
